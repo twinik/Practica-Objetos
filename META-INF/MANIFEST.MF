@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Automatic-Module-Name: Practica_Objetos
+Automatic-Module-Name: Ej1
 Bundle-ManifestVersion: 2
-Bundle-Name: Practica_Objetos
+Bundle-Name: Ej1
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: Practica_Objetos; singleton:=true
+Bundle-SymbolicName: Ej1; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.ibm.icu,
  org.eclipse.xtext,
