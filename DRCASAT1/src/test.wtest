@@ -1,0 +1,48 @@
+import EnfermedadAutoinmune.*
+import EnfermedadInfecciosa.*
+import Persona.*
+
+describe "Persona" {
+	var frank
+	var logan
+	var malaria1
+	var malaria2
+	var otitis
+	var lupus
+	
+	method initialize() {
+		malaria1 = new EnfermedadInfecciosa(celulasAmenazadas = 500)
+		malaria2 = new EnfermedadInfecciosa(celulasAmenazadas = 800)
+		otitis = new EnfermedadInfecciosa(celulasAmenazadas = 100)
+		
+		lupus = new EnfermedadAutoinmune(celulasAmenazadas = 10000)
+		
+		logan = new Persona(temperatura = 36, celulas = 3000000, enfermedades = [malaria1, otitis, lupus])
+		frank = new Persona(temperatura = 36, celulas = 3500000)
+	}
+	
+	test "Punto 1 - Frank contrajo malaria2" {
+		frank.contraerEnfermedad(malaria2)
+		assert.that(frank.tieneEnfermedad(malaria2))
+	}
+	
+	test "Punto 2 - Malaria1 se reproducio" {
+		malaria1.reproducirse()
+		assert.equals(malaria1.celulasAmenazadas(), 1000)
+	}
+	
+	test "Punto 3 - Logan vive 1 dia" {
+		logan.vivirUnDia()
+		assert.equals(logan.enfermedadMasAfecciosa(), lupus)
+		assert.notThat(logan.estarEnComa())
+		//assert.equals(logan.cantidadDeCelulasAfectadasPorEnfermedadesAgresivas(), )
+	}
+	
+	test "Punto 4 - Logan vive 31 dias" {
+		31.times {n => logan.vivirUnDia()}
+		assert.equals(logan.enfermedadMasAfecciosa(), lupus)
+		assert.that(logan.estarEnComa())
+		//assert.equals(logan.cantidadDeCelulasAfectadasPorEnfermedadesAgresivas(), )
+		
+	}
+}
