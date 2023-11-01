@@ -14,7 +14,7 @@ class Linea {
 	
 	method filtrarPorFecha(fechaInicial, fechaFinal) {
 		return consumos.filter{ consumo =>
-			consumo.fechaConsumo.between(fechaInicial, fechaFinal)
+			consumo.fechaConsumo().between(fechaInicial, fechaFinal)
 		}
 	}
 	

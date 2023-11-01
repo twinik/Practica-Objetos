@@ -9,7 +9,7 @@ class ConsumoInternet inherits Consumo {
 	const property cantMB
 	
 	override method costo() {
-		return cantMB * empresa.precioMB
+		return cantMB * empresa.precioMB()
 	}
 }
 
@@ -17,10 +17,10 @@ class ConsumoLlamada inherits Consumo {
 	const property cantSegundos
 	
 	override method costo() {
-		return if (cantSegundos > 30) {
-			return empresa.precioFijoLlamada + (cantSegundos - 30) * empresa.precioSegundoLlamada
+		if (cantSegundos > 30) {
+			return empresa.precioFijoLlamada() + (cantSegundos - 30) * empresa.precioSegundoLlamada()
 		} else {
-			return empresa.precioFijoLlamada
+			return empresa.precioFijoLlamada()
 		}
 	}
 	
