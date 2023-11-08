@@ -16,18 +16,7 @@ class Inmueble {
 		estaReservada = true
 		reservadaPor = cliente
 	}
-	
-	method concretarOperacion(cliente) {
-		if (self.reservadaPorCliente(cliente) || !estaReservada) {
-			operacion.concretar()
-		} else {
-			self.error("Ya esta reservada, no se puede realizar la operacion")
-		}
-	}
-	
-	method reservadaPorCliente(cliente) {
-		return estaReservada && reservadaPor == cliente
-	}
+
 }
 
 class Casa inherits Inmueble {
